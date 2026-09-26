@@ -203,6 +203,10 @@
   }
 
   .pub {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 28px;
+    align-items: start;
     padding: 32px 0;
     border-top: 1px solid var(--line);
   }
@@ -248,30 +252,25 @@
     font-style: italic;
   }
 
-  .pub-meta {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
   .pub-link {
+    display: inline-block;
     font-size: 0.85rem;
     color: var(--ink-muted);
     border: 1px dashed var(--line-strong);
     padding: 4px 10px;
   }
 
+  /* Larger publication photo, placed beside the entry's text */
   .pub-photo {
-    width: 120px;
-    height: 90px;
+    width: 100%;
+    aspect-ratio: 4 / 3;
     border: 1px dashed var(--line-strong);
     background: #F2F1EB;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--ink-muted);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     text-align: center;
     overflow: hidden;
     flex-shrink: 0;
@@ -282,6 +281,15 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  @media (max-width: 640px) {
+    .pub {
+      grid-template-columns: 1fr;
+    }
+    .pub-photo {
+      aspect-ratio: 16 / 9;
+    }
   }
 
   /* ---------- Projects ---------- */
@@ -359,18 +367,22 @@
     padding: 3px 8px;
   }
 
-  /* ---------- Video slot ---------- */
+  /* ---------- Video slot ----------
+     All project clips share this fixed 16:9 box so they render at a
+     consistent size regardless of the source video's native resolution.
+     They play like GIFs: no controls, autoplay, looped, always muted. */
 
   .video-slot {
     aspect-ratio: 16 / 9;
     width: 100%;
-    border: 1px dashed var(--line-strong);
+    border: 1px solid var(--line-strong);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--ink-muted);
     font-size: 0.85rem;
     background: #F2F1EB;
+    overflow: hidden;
   }
 
   .video-slot video {
@@ -378,6 +390,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    pointer-events: none; /* no click-to-control, purely decorative like a GIF */
   }
 
   /* ---------- Placeholder project ---------- */
@@ -414,7 +427,7 @@
     <p class="site-role">Agri-robotics &amp; precision agriculture</p>
     <nav class="site-links">
       <a href="https://github.com/Essais24">GitHub</a>
-      <a href="www.linkedin.com/in/archisha-ahuja-9a222a295">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/archisha-ahuja-9a222a295">LinkedIn</a>
       <a href="cv.pdf">CV</a>
       <a href="mailto:archisha1205@gmail.com">Email</a>
     </nav>
@@ -433,14 +446,14 @@
     <!--
       To add your photo: put an image file (e.g. photo.jpg) in this repo,
       then replace the div below with:
-      <div class="about-photo"><img src="1785952620506.jpg" alt="Portrait of Archisha Ahuja"></div>
+      <div class="about-photo"><img src="photo.jpg" alt="Portrait of Archisha Ahuja"></div>
     -->
     <div class="about-photo"><img src="1785952620506.jpg" alt="Portrait of Archisha Ahuja"></div>
     <div class="about-text">
       <h2>About me</h2>
-     <p>I'm Archisha Ahuja. I build computer vision and robotics systems for agriculture, working across the full stack from camera to crop: model training, embedded deployment, robotic control, and the geometry that turns a detection into a real-world action. I am currently pursuing a B.Tech in Agricultural and Food Engineering at IIT Kharagpur.</p>
-
-<p>I'm currently applying for PhD positions in agricultural robotics. I want to develop the ability to build intelligent robotic systems end-to-end, from perception and decision-making to physical interaction with the environment, and ultimately apply these technologies where they can have the greatest practical impact. Outside of research, I'm part of a dramatics society and love to travel.</p>
+      <p>I'm Archisha Ahuja. I build computer vision and robotics systems for agriculture, working across the full stack from camera to crop: model training, embedded deployment, robotic control, and the geometry that turns a detection into a real-world action. I am currently pursuing a B.Tech in Agricultural and Food Engineering at IIT Kharagpur.</p>
+      <p>I'm currently applying for PhD positions in agricultural robotics. I want to develop the ability to build intelligent robotic systems end-to-end, from perception and decision-making to physical interaction with the environment, and ultimately apply these technologies where they can have the greatest practical impact. Outside of research, I'm part of a dramatics society and love to travel.</p>
+    </div>
   </div>
 </section>
 
@@ -451,50 +464,46 @@
     <p class="section-sub" style="margin-top:24px;">Publications</p>
 
     <!--
-      Add the DOI/paper link and photo later:
-      Link: replace the .pub-link div text with
-        <a href="PASTE_DOI_OR_PAPER_URL_HERE">View paper</a>
-      Photo: put an image file (e.g. pub1.jpg) in the repo, then replace
-      the .pub-photo div with
-        <div class="pub-photo"><img src="pub1.jpg" alt="..."></div>
+      Add the DOI/paper link later:
+      <a href="PASTE_DOI_OR_PAPER_URL_HERE">View paper</a>
     -->
     <article class="pub">
-      <div class="pub-head">
-        <p class="pub-title">A wind-assisted active perception system for occluded green fruit detection and instance segmentation in commercial orchards</p>
-        <span class="pub-status">Submitted</span>
-      </div>
-      <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
-      <p class="pub-venue">Computers and Electronics in Agriculture</p>
-      <div class="pub-meta">
+      <div class="pub-content">
+        <div class="pub-head">
+          <p class="pub-title">A wind-assisted active perception system for occluded green fruit detection and instance segmentation in commercial orchards</p>
+          <span class="pub-status">Submitted</span>
+        </div>
+        <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
+        <p class="pub-venue">Computers and Electronics in Agriculture</p>
         <div class="pub-link">Link coming soon</div>
-        <div class="pub-photo"><img src="Picture1.jpg" alt="..."></div>
       </div>
+      <div class="pub-photo"><img src="Picture1.jpg" alt="A wind-assisted active perception system for occluded green fruit detection"></div>
     </article>
 
     <article class="pub">
-      <div class="pub-head">
-        <p class="pub-title">Semi-autonomous system for robotic fruitlet thinning in commercial orchards</p>
-        <span class="pub-status">In progress</span>
-      </div>
-      <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
-      <div class="pub-meta">
+      <div class="pub-content">
+        <div class="pub-head">
+          <p class="pub-title">Semi-autonomous system for robotic fruitlet thinning in commercial orchards</p>
+          <span class="pub-status">In progress</span>
+        </div>
+        <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
         <div class="pub-link">Link coming soon</div>
-        <div class="pub-photo"><img src="Pic2.jpg" alt="..."></div>
       </div>
+      <div class="pub-photo"><img src="Pic2.jpg" alt="Semi-autonomous system for robotic fruitlet thinning"></div>
     </article>
 
     <p class="section-sub" style="margin-top:16px;">Conferences</p>
 
     <article class="pub">
-      <div class="pub-head">
-        <p class="pub-title">Large-Scale Canopy Architecture Mapping in Apple Orchards</p>
-        <span class="pub-status">Poster</span>
-      </div>
-      <p class="pub-venue">ASABE Annual International Meeting 2026</p>
-      <div class="pub-meta">
+      <div class="pub-content">
+        <div class="pub-head">
+          <p class="pub-title">Large-Scale Canopy Architecture Mapping in Apple Orchards</p>
+          <span class="pub-status">Poster</span>
+        </div>
+        <p class="pub-venue">ASABE Annual International Meeting 2026</p>
         <div class="pub-link">Link coming soon</div>
-        <div class="pub-photo"><img src="Canopy_classification.jpg" alt="..."></div>
       </div>
+      <div class="pub-photo"><img src="Canopy_classification.jpg" alt="Large-scale canopy architecture mapping in apple orchards"></div>
     </article>
 
   </div>
@@ -521,14 +530,9 @@
         <span>Flask</span>
         <span>FFmpeg</span>
       </div>
-      <!--
-        To add a GitHub-hosted video: upload the video to a GitHub issue,
-        PR, or README (drag-and-drop into the text box) to get a URL like
-        https://github.com/user-attachments/assets/xxxxxxxx
-        Then replace the div below with:
-        <video controls src="PASTE_GITHUB_VIDEO_URL_HERE"></video>
-      -->
-      <video controls src=drone.mp4></video>
+      <div class="video-slot">
+        <video src="drone.mp4" autoplay loop muted playsinline></video>
+      </div>
     </article>
 
     <!-- Project 2 -->
@@ -548,7 +552,9 @@
         <span>kornia</span>
         <span>Jetson Orin Nano</span>
       </div>
-      <video controls src=spr.mp4></video>
+      <div class="video-slot">
+        <video src="spr.mp4" autoplay loop muted playsinline></video>
+      </div>
     </article>
 
     <!-- Project 3 -->
@@ -566,7 +572,7 @@
         <span>Python</span>
         <span>GIS preprocessing</span>
       </div>
-      <div class="pub-photo"><img src="Final Results.jpg" alt="..."></div>
+      <div class="pub-photo"><img src="Final Results.jpg" alt="Orchard classification results"></div>
     </article>
 
     <!-- Placeholder for future project -->
@@ -589,4 +595,5 @@
 
 </body>
 </html>
+
 
