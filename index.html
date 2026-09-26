@@ -180,6 +180,110 @@
     }
   }
 
+  /* ---------- Publications ---------- */
+
+  .pubs {
+    padding: 56px 0 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pubs h2.section-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0 0 8px;
+  }
+
+  .pubs .section-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink-muted);
+    margin: 0 0 4px;
+  }
+
+  .pub {
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .pub:first-of-type {
+    border-top: none;
+  }
+
+  .pub-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .pub-title {
+    margin: 0;
+    font-weight: 500;
+    max-width: 60ch;
+  }
+
+  .pub-status {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--soil);
+    border: 1px solid var(--line-strong);
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .pub-authors {
+    margin: 0 0 4px;
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+  }
+
+  .pub-venue {
+    margin: 0 0 16px;
+    color: var(--ink-muted);
+    font-size: 0.92rem;
+    font-style: italic;
+  }
+
+  .pub-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pub-link {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    border: 1px dashed var(--line-strong);
+    padding: 4px 10px;
+  }
+
+  .pub-photo {
+    width: 120px;
+    height: 90px;
+    border: 1px dashed var(--line-strong);
+    background: #F2F1EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-muted);
+    font-size: 0.72rem;
+    text-align: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .pub-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   /* ---------- Projects ---------- */
 
   .projects {
@@ -340,6 +444,62 @@
   </div>
 </section>
 
+<section class="pubs">
+  <div class="wrap">
+    <h2 class="section-heading">Publications &amp; Conferences</h2>
+
+    <p class="section-sub" style="margin-top:24px;">Publications</p>
+
+    <!--
+      Add the DOI/paper link and photo later:
+      Link: replace the .pub-link div text with
+        <a href="PASTE_DOI_OR_PAPER_URL_HERE">View paper</a>
+      Photo: put an image file (e.g. pub1.jpg) in the repo, then replace
+      the .pub-photo div with
+        <div class="pub-photo"><img src="pub1.jpg" alt="..."></div>
+    -->
+    <article class="pub">
+      <div class="pub-head">
+        <p class="pub-title">A wind-assisted active perception system for occluded green fruit detection and instance segmentation in commercial orchards</p>
+        <span class="pub-status">Submitted</span>
+      </div>
+      <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
+      <p class="pub-venue">Computers and Electronics in Agriculture</p>
+      <div class="pub-meta">
+        <div class="pub-link">Link coming soon</div>
+        <div class="pub-photo">Photo coming soon</div>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-head">
+        <p class="pub-title">Semi-autonomous system for robotic fruitlet thinning in commercial orchards</p>
+        <span class="pub-status">In progress</span>
+      </div>
+      <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
+      <div class="pub-meta">
+        <div class="pub-link">Link coming soon</div>
+        <div class="pub-photo">Photo coming soon</div>
+      </div>
+    </article>
+
+    <p class="section-sub" style="margin-top:16px;">Conferences</p>
+
+    <article class="pub">
+      <div class="pub-head">
+        <p class="pub-title">Large-Scale Canopy Architecture Mapping in Apple Orchards</p>
+        <span class="pub-status">Poster</span>
+      </div>
+      <p class="pub-venue">ASABE Annual International Meeting 2026</p>
+      <div class="pub-meta">
+        <div class="pub-link">Link coming soon</div>
+        <div class="pub-photo">Photo coming soon</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 <main class="projects">
   <div class="wrap">
 
@@ -429,3 +589,4 @@
 
 </body>
 </html>
+
