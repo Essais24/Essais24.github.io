@@ -117,6 +117,35 @@
     margin: 0;
   }
 
+  /* ---------- Clickable images ----------
+     Shared behaviour for any photo the user can click to open full-size
+     in a new tab: the anchor wraps the image, sits above a small grey
+     caption, and doesn't look like a normal text link. */
+
+  .photo-wrap {
+    display: inline-block;
+    width: 100%;
+  }
+
+  a.photo-box {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a.photo-box:hover {
+    color: inherit;
+  }
+
+  .photo-caption {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
   /* ---------- About ---------- */
 
   .about {
@@ -266,7 +295,6 @@
     aspect-ratio: 4 / 3;
     border: 1px dashed var(--line-strong);
     background: #F2F1EB;
-    display: flex;
     align-items: center;
     justify-content: center;
     color: var(--ink-muted);
@@ -426,7 +454,7 @@
     <p class="site-name">Archisha Ahuja</p>
     <p class="site-role">Agri-robotics &amp; precision agriculture</p>
     <nav class="site-links">
-      <a href="https://github.com/Essais24">GitHub</a>6
+      <a href="https://github.com/Essais24">GitHub</a>
       <a href="https://www.linkedin.com/in/archisha-ahuja-9a222a295">LinkedIn</a>
       <a href="cv.pdf">CV</a>
       <a href="mailto:archisha1205@gmail.com">Email</a>
@@ -445,10 +473,14 @@
   <div class="wrap">
     <!--
       To add your photo: put an image file (e.g. photo.jpg) in this repo,
-      then replace the div below with:
-      <div class="about-photo"><img src="photo.jpg" alt="Portrait of Archisha Ahuja"></div>
+      then replace the src below.
     -->
-    <div class="about-photo"><img src="1785952620506.jpg" alt="Portrait of Archisha Ahuja"></div>
+    <div>
+      <a class="photo-box about-photo" href="1785952620506.jpg" target="_blank" rel="noopener">
+        <img src="1785952620506.jpg" alt="Portrait of Archisha Ahuja">
+      </a>
+      <span class="photo-caption">Click to open</span>
+    </div>
     <div class="about-text">
       <h2>About me</h2>
       <p>I'm Archisha Ahuja. I build computer vision and robotics systems for agriculture, working across the full stack from camera to crop: model training, embedded deployment, robotic control, and the geometry that turns a detection into a real-world action. I am currently pursuing a B.Tech in Agricultural and Food Engineering at IIT Kharagpur.</p>
@@ -477,7 +509,12 @@
         <p class="pub-venue">Computers and Electronics in Agriculture</p>
         <div class="pub-link">Link coming soon</div>
       </div>
-      <div class="pub-photo"><img src="Picture1.jpg" alt="A wind-assisted active perception system for occluded green fruit detection"></div>
+      <div>
+        <a class="photo-box pub-photo" href="Picture1.jpg" target="_blank" rel="noopener">
+          <img src="Picture1.jpg" alt="A wind-assisted active perception system for occluded green fruit detection">
+        </a>
+        <span class="photo-caption">Click to open</span>
+      </div>
     </article>
 
     <article class="pub">
@@ -489,7 +526,12 @@
         <p class="pub-authors">Sapkota, R., Bin Sabir, S. U., Ahuja, A., &amp; Karkee, M.</p>
         <div class="pub-link">Link coming soon</div>
       </div>
-      <div class="pub-photo"><img src="Pic2.jpg" alt="Semi-autonomous system for robotic fruitlet thinning"></div>
+      <div>
+        <a class="photo-box pub-photo" href="pic2.jpg" target="_blank" rel="noopener">
+          <img src="pic2.jpg" alt="Semi-autonomous system for robotic fruitlet thinning">
+        </a>
+        <span class="photo-caption">Click to open</span>
+      </div>
     </article>
 
     <p class="section-sub" style="margin-top:16px;">Conferences</p>
@@ -503,7 +545,12 @@
         <p class="pub-venue">ASABE Annual International Meeting 2026</p>
         <div class="pub-link">Link coming soon</div>
       </div>
-      <div class="pub-photo"><img src="Canopy_classification.jpg" alt="Large-scale canopy architecture mapping in apple orchards"></div>
+      <div>
+        <a class="photo-box pub-photo" href="Canopy_classification.jpg" target="_blank" rel="noopener">
+          <img src="Canopy_classification.jpg" alt="Large-scale canopy architecture mapping in apple orchards">
+        </a>
+        <span class="photo-caption">Click to open</span>
+      </div>
     </article>
 
   </div>
@@ -572,7 +619,12 @@
         <span>Python</span>
         <span>GIS preprocessing</span>
       </div>
-      <div class="pub-photo"><img src="Final Results.jpg" alt="Orchard classification results"></div>
+      <div>
+        <a class="photo-box pub-photo" href="Final%20Results.png" target="_blank" rel="noopener">
+          <img src="Final%20Results.png" alt="Orchard classification results">
+        </a>
+        <span class="photo-caption">Click to open</span>
+      </div>
     </article>
 
     <!-- Placeholder for future project -->
