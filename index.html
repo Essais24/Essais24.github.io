@@ -421,6 +421,12 @@
     pointer-events: none; /* no click-to-control, purely decorative like a GIF */
   }
 
+  /* Align the clip's top edge with the top of the display box
+     (crops from the bottom instead of the top) */
+  .video-slot video.align-top {
+    object-position: center top;
+  }
+
   /* ---------- Placeholder project ---------- */
 
   .project.placeholder h2 {
@@ -578,7 +584,7 @@
         <span>FFmpeg</span>
       </div>
       <div class="video-slot">
-        <video src="drone.mp4" autoplay loop muted playsinline></video>
+        <video class="align-top" src="drone.mp4" autoplay loop muted playsinline></video>
       </div>
     </article>
 
@@ -647,5 +653,3 @@
 
 </body>
 </html>
-
-
