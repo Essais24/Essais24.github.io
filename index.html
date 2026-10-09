@@ -4,453 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archisha Ahuja — Projects</title>
-<meta name="description" content="Precision agriculture and computer vision projects: autonomous weed spraying, edge deployment, and orchard mapping from satellite imagery.">
+<meta name="description" content="Agricultural robotics and computer vision projects: fruit thinning with a UR5 arm, autonomous weed spraying, edge deployment, orchard mapping, and farm decision support.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #FAFAF7;
-    --ink: #1C2321;
-    --ink-muted: #5C6560;
-    --accent: #2F5233;
-    --soil: #8A6D3B;
-    --line: #DAD9D2;
-    --line-strong: #C7C6BC;
-    --max-width: 760px;
-  }
-
-  * { box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-
-  a:hover { color: var(--ink); }
-
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-
-  .wrap {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- Header ---------- */
-
-  header.site {
-    padding: 64px 0 40px;
-    border-bottom: 1px solid var(--line);
-    text-align: center;
-  }
-
-  .site-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    margin: 0 0 10px;
-  }
-
-  .site-role {
-    color: var(--ink-muted);
-    margin: 0 0 18px;
-    font-size: 1.15rem;
-  }
-
-  .site-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 0.9rem;
-  }
-
-  .site-links a { color: var(--ink); }
-  .site-links a:hover { color: var(--accent); }
-
-  /* ---------- Hero ---------- */
-
-  .hero {
-    padding: 56px 0 64px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: clamp(2rem, 5vw, 2.9rem);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin: 0 0 20px;
-    max-width: 15ch;
-  }
-
-  .hero p {
-    max-width: 58ch;
-    color: var(--ink-muted);
-    font-size: 1.05rem;
-    margin: 0;
-  }
-
-  /* ---------- Clickable images ----------
-     Shared behaviour for any photo the user can click to open full-size
-     in a new tab: the anchor wraps the image, sits above a small grey
-     caption, and doesn't look like a normal text link. */
-
-  .photo-wrap {
-    display: inline-block;
-    width: 100%;
-  }
-
-  a.photo-box {
-    display: flex;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  }
-
-  a.photo-box:hover {
-    color: inherit;
-  }
-
-  .photo-caption {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.72rem;
-    color: var(--ink-muted);
-    text-align: center;
-  }
-
-  /* ---------- About ---------- */
-
-  .about {
-    padding: 56px 0 64px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .about .wrap {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-
-  .about-photo {
-    width: 160px;
-    height: 160px;
-    border: 1px dashed var(--line-strong);
-    background: #F2F1EB;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-muted);
-    font-size: 0.78rem;
-    text-align: center;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .about-text h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin: 0 0 14px;
-  }
-
-  .about-text p {
-    margin: 0 0 14px;
-    color: var(--ink);
-    max-width: 60ch;
-  }
-
-  .about-text p:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 560px) {
-    .about {
-      grid-template-columns: 1fr;
-    }
-    .about-photo {
-      width: 120px;
-      height: 120px;
-    }
-  }
-
-  /* ---------- Publications ---------- */
-
-  .pubs {
-    padding: 56px 0 8px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .pubs h2.section-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin: 0 0 8px;
-  }
-
-  .pubs .section-sub {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--ink-muted);
-    margin: 0 0 4px;
-  }
-
-  .pub {
-    display: grid;
-    grid-template-columns: 1fr 260px;
-    gap: 28px;
-    align-items: start;
-    padding: 32px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .pub:first-of-type {
-    border-top: none;
-  }
-
-  .pub-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-  }
-
-  .pub-title {
-    margin: 0;
-    font-weight: 500;
-    max-width: 60ch;
-  }
-
-  .pub-status {
-    display: inline-block;
-    font-size: 0.78rem;
-    color: var(--soil);
-    border: 1px solid var(--line-strong);
-    padding: 2px 8px;
-    white-space: nowrap;
-  }
-
-  .pub-authors {
-    margin: 0 0 4px;
-    color: var(--ink-muted);
-    font-size: 0.92rem;
-  }
-
-  .pub-venue {
-    margin: 0 0 16px;
-    color: var(--ink-muted);
-    font-size: 0.92rem;
-    font-style: italic;
-  }
-
-  .pub-link {
-    display: inline-block;
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    border: 1px dashed var(--line-strong);
-    padding: 4px 10px;
-  }
-
-  /* Larger publication photo, placed beside the entry's text */
-  .pub-photo {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border: 1px dashed var(--line-strong);
-    background: #F2F1EB;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-muted);
-    font-size: 0.78rem;
-    text-align: center;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .pub-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  @media (max-width: 640px) {
-    .pub {
-      grid-template-columns: 1fr;
-    }
-    .pub-photo {
-      aspect-ratio: 16 / 9;
-    }
-  }
-
-  /* ---------- Projects ---------- */
-
-  .projects {
-    padding: 8px 0 0;
-  }
-
-  .project {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .project:last-of-type {
-    border-bottom: none;
-  }
-
-  .project-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--accent);
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-
-  .project-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-
-  .project h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  .project-link {
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-
-  .project-status {
-    display: inline-block;
-    font-size: 0.78rem;
-    color: var(--soil);
-    border: 1px solid var(--line-strong);
-    padding: 2px 8px;
-    margin-bottom: 14px;
-  }
-
-  .project p.desc {
-    max-width: 68ch;
-    margin: 0 0 20px;
-    color: var(--ink);
-  }
-
-  .stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-
-  .stack span {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--ink-muted);
-    border: 1px solid var(--line-strong);
-    padding: 3px 8px;
-  }
-
-  /* ---------- Video slot ----------
-     All project clips share this fixed 16:9 box so they render at a
-     consistent size regardless of the source video's native resolution.
-     They play like GIFs: no controls, autoplay, looped, always muted. */
-
-  .video-slot {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    border: 1px solid var(--line-strong);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-muted);
-    font-size: 0.85rem;
-    background: #F2F1EB;
-    overflow: hidden;
-  }
-
-  .video-slot video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    pointer-events: none; /* no click-to-control, purely decorative like a GIF */
-  }
-
-  /* Align the clip's top edge with the top of the display box
-     (crops from the bottom instead of the top) */
-  .video-slot video.align-top {
-    object-position: center top;
-  }
-
-  /* ---------- Placeholder project ---------- */
-
-  .project.placeholder h2 {
-    color: var(--ink-muted);
-  }
-
-  .project.placeholder .desc {
-    color: var(--ink-muted);
-    font-style: normal;
-  }
-
-  /* ---------- Footer ---------- */
-
-  footer.site {
-    padding: 40px 0 64px;
-    color: var(--ink-muted);
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: 480px) {
-    header.site { padding-top: 40px; }
-    .hero { padding: 40px 0 48px; }
-    .project { padding: 36px 0; }
-  }
+  :root{--bg:#FAFAF7;--ink:#1C2321;--ink-muted:#5C6560;--accent:#2F5233;--soil:#8A6D3B;--line:#DAD9D2;--line-strong:#C7C6BC;--max-width:760px}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{color:var(--ink)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+
+  header.site{padding:64px 0 40px;border-bottom:1px solid var(--line);text-align:center}
+  .site-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:2rem;margin:0 0 10px}
+  .site-role{color:var(--ink-muted);margin:0 0 18px;font-size:1.15rem}
+  .site-links{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;font-size:.9rem}
+  .site-links a{color:var(--ink)}
+  .site-links a:hover{color:var(--accent)}
+
+  .hero{padding:56px 0 64px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(2rem,5vw,2.9rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 20px;max-width:15ch}
+  .hero p{max-width:58ch;color:var(--ink-muted);font-size:1.05rem;margin:0}
+
+  .photo-wrap{display:inline-block;width:100%}
+  a.photo-box{display:flex;text-decoration:none;color:inherit;cursor:pointer}
+  a.photo-box:hover{color:inherit}
+  .photo-caption{display:block;margin-top:6px;font-size:.72rem;color:var(--ink-muted);text-align:center}
+
+  .about{padding:56px 0 64px;border-bottom:1px solid var(--line)}
+  .about .wrap{display:grid;grid-template-columns:160px 1fr;gap:32px;align-items:start}
+  .about-photo{width:160px;height:160px;border:1px dashed var(--line-strong);background:#F2F1EB;display:flex;align-items:center;justify-content:center;color:var(--ink-muted);font-size:.78rem;text-align:center;overflow:hidden;flex-shrink:0}
+  .about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-text h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.25rem;margin:0 0 14px}
+  .about-text p{margin:0 0 14px;color:var(--ink);max-width:60ch}
+  .about-text p:last-child{margin-bottom:0}
+  @media (max-width:560px){.about .wrap{grid-template-columns:1fr}.about-photo{width:120px;height:120px}}
+
+  .pubs{padding:56px 0 8px;border-bottom:1px solid var(--line)}
+  .pubs h2.section-heading{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.4rem;margin:0 0 8px}
+  .pubs .section-sub{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;color:var(--ink-muted);margin:0 0 4px}
+  .pub{display:grid;grid-template-columns:1fr 260px;gap:28px;align-items:start;padding:32px 0;border-top:1px solid var(--line)}
+  .pub:first-of-type{border-top:none}
+  .pub-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .pub-title{margin:0;font-weight:500;max-width:60ch}
+  .pub-status{display:inline-block;font-size:.78rem;color:var(--soil);border:1px solid var(--line-strong);padding:2px 8px;white-space:nowrap}
+  .pub-authors{margin:0 0 4px;color:var(--ink-muted);font-size:.92rem}
+  .pub-venue{margin:0 0 16px;color:var(--ink-muted);font-size:.92rem;font-style:italic}
+  .pub-link{display:inline-block;font-size:.85rem;color:var(--ink-muted);border:1px dashed var(--line-strong);padding:4px 10px}
+  .pub-photo{width:100%;aspect-ratio:4/3;border:1px dashed var(--line-strong);background:#F2F1EB;align-items:center;justify-content:center;color:var(--ink-muted);font-size:.78rem;text-align:center;overflow:hidden;flex-shrink:0}
+  .pub-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (max-width:640px){.pub{grid-template-columns:1fr}.pub-photo{aspect-ratio:16/9}}
+
+  .projects{padding:8px 0 0}
+  .project{padding:48px 0;border-bottom:1px solid var(--line)}
+  .project:last-of-type{border-bottom:none}
+  .project-tag{display:inline-block;font-size:.8rem;color:var(--accent);margin-bottom:12px;font-weight:500}
+  .project-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .project h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.4rem;margin:0;line-height:1.3}
+  .project-link{font-size:.9rem;white-space:nowrap}
+  .project-meta{margin:0 0 14px;color:var(--ink-muted);font-size:.9rem}
+  .project-status{display:inline-block;font-size:.78rem;color:var(--soil);border:1px solid var(--line-strong);padding:2px 8px;margin-bottom:14px}
+  .project p.desc{max-width:68ch;margin:0 0 14px;color:var(--ink)}
+  .project ul.details{max-width:68ch;margin:0 0 20px;padding-left:1.2em}
+  .project ul.details li{margin-bottom:6px}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .stack span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-muted);border:1px solid var(--line-strong);padding:3px 8px}
+
+  .video-slot{aspect-ratio:16/9;width:100%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--ink-muted);font-size:.85rem;background:#F2F1EB;overflow:hidden}
+  .video-slot video{width:100%;height:100%;display:block;object-fit:cover;pointer-events:none}
+  .video-slot video.align-top{object-position:center top}
+
+  /* Empty slot to drop a photo/video into: replace the <div class="media-slot"> with an <a class="photo-box pub-photo"> + <img>, as in the Orchard project */
+  .media-slot{aspect-ratio:16/9;width:100%;border:1px dashed var(--line-strong);background:#F2F1EB;display:flex;align-items:center;justify-content:center;color:var(--ink-muted);font-size:.85rem;text-align:center}
+
+  .project.placeholder h2,.project.placeholder .desc{color:var(--ink-muted)}
+
+  footer.site{padding:40px 0 64px;color:var(--ink-muted);font-size:.85rem}
+  @media (max-width:480px){header.site{padding-top:40px}.hero{padding:40px 0 48px}.project{padding:36px 0}}
 </style>
 </head>
 <body>
@@ -471,16 +105,12 @@
 <section class="hero">
   <div class="wrap">
     <h1>From camera to crop: perception and robotics for agriculture.</h1>
-    <p>A collection of projects on autonomous weed detection and spraying, edge deployment on embedded hardware, and remote-sensing based orchard mapping — spanning drones, Jetson devices, and satellite imagery.</p>
+    <p>A collection of projects on robotic fruit thinning, autonomous weed detection and spraying, edge deployment on embedded hardware, remote-sensing based orchard mapping, and farm decision support, spanning robot arms, drones, Jetson devices, and satellite imagery.</p>
   </div>
 </section>
 
 <section class="about">
   <div class="wrap">
-    <!--
-      To add your photo: put an image file (e.g. photo.jpg) in this repo,
-      then replace the src below.
-    -->
     <div>
       <a class="photo-box about-photo" href="1785952620506.jpg" target="_blank" rel="noopener">
         <img src="1785952620506.jpg" alt="Portrait of Archisha Ahuja">
@@ -498,13 +128,8 @@
 <section class="pubs">
   <div class="wrap">
     <h2 class="section-heading">Publications &amp; Conferences</h2>
-
     <p class="section-sub" style="margin-top:24px;">Publications</p>
 
-    <!--
-      Add the DOI/paper link later:
-      <a href="PASTE_DOI_OR_PAPER_URL_HERE">View paper</a>
-    -->
     <article class="pub">
       <div class="pub-content">
         <div class="pub-head">
@@ -533,7 +158,7 @@
         <div class="pub-link">Link coming soon</div>
       </div>
       <div>
-        <a class="photo-box pub-photo" href="pic2.jpg" target="_blank" rel="noopener">
+        <a class="photo-box pub-photo" href="pic2.jpeg" target="_blank" rel="noopener">
           <img src="pic2.jpeg" alt="Semi-autonomous system for robotic fruitlet thinning">
         </a>
         <span class="photo-caption">Click to open</span>
@@ -558,72 +183,96 @@
         <span class="photo-caption">Click to open</span>
       </div>
     </article>
-
   </div>
 </section>
 
 <main class="projects">
   <div class="wrap">
 
-    <!-- Project 1 -->
+    <!-- Project: Green-fruit thinning (NEW) -->
+    <article class="project">
+      <span class="project-tag">Field robotics</span>
+      <div class="project-head">
+        <h2>Green-Fruit Thinning — UR5 Arm on a Warthog UGV</h2>
+      </div>
+      <p class="project-meta">Research internship with Prof. Manoj Karkee, Cornell University · May'26 – Jul'26</p>
+      <span class="project-status">Internship project</span>
+      <p class="desc">A ROS-based pipeline that integrates a 6-DoF UR5 manipulator with a Clearpath Warthog ground vehicle to reach and thin green fruit in orchard trees, from detection to a 3D target to arm motion.</p>
+      <ul class="details">
+        <li>Built a URDF-based Gazebo simulation of the Warthog with simulated sensors, and 3D LiDAR waypoint navigation validated for sim-to-real transfer.</li>
+        <li>Benchmarked MoveIt motion planners (OMPL, Anytime Path Shortening, STOMP, CHOMP) with inverse kinematics. Their paths were inconsistent, risking collisions and camera-cable tangling, so they were replaced.</li>
+        <li>Implemented a grid-based visual servoing system: the camera view is split into 6 blocks, each with a recorded approach trajectory, and gain-controlled feedback converts positional error into velocity commands, reaching sub-3 mm end-effector accuracy.</li>
+        <li>Fixed failing depth sensing in sunlight (Intel RealSense IR-ToF) by fusing calibrated 3D LiDAR with the depth camera using ray-based cluster detection, improving 3D fruit localisation.</li>
+      </ul>
+      <div class="stack">
+        <span>ROS 2</span><span>Gazebo</span><span>MoveIt</span><span>UR5</span><span>Visual servoing</span><span>3D LiDAR</span><span>Nav2</span><span>RealSense</span>
+      </div>
+      <div class="media-slot">Photo / video coming soon</div>
+    </article>
+
+    <!-- Project: Drone -->
     <article class="project">
       <span class="project-tag">Field robotics</span>
       <div class="project-head">
         <h2>Weed Detection &amp; Spraying — GPS-Guided Drone</h2>
         <a class="project-link" href="https://github.com/Essais24/Weed-Detection-and-Spraying-Using-GPS-Guided-Drone-">View on GitHub</a>
       </div>
+      <p class="project-meta">Project internship, TechnoS Instruments · Jun'25 – Dec'25</p>
       <span class="project-status">Working prototype</span>
       <p class="desc">A GPS-guided drone that spots weeds from the air and sprays them directly, with no human in the loop. A YOLOv5 model running on a Raspberry Pi 4 and Pixhawk flight controller turns each detection into a real-world GPS coordinate, then commands the drone toward it and triggers the sprayer on arrival. Currently reaches 0.82 mAP@0.5 on the detection model; autonomous flight-to-target is still being finished.</p>
+      <ul class="details">
+        <li>Hardware: Raspberry Pi 4B, Pixhawk, Pi Camera, and a sprayer module switched through a relay motor controller (SRD-05VDC-3L-C).</li>
+        <li>Trained YOLOv5-s on a grassland dataset and ran real-time inference on live video.</li>
+        <li>Streams video over Wi-Fi with MediaMTX (RTSP) and controls the drone with MAVProxy, all remotely from a laptop.</li>
+        <li>Software: FFmpeg for streaming, Flask, PyMAVLink for sharing GPS coordinates of detected weeds, and Pigpio for GPIO control of automated spraying.</li>
+      </ul>
       <div class="stack">
-        <span>YOLOv5</span>
-        <span>Raspberry Pi 4</span>
-        <span>Pixhawk</span>
-        <span>PyMAVLink</span>
-        <span>OpenCV</span>
-        <span>Flask</span>
-        <span>FFmpeg</span>
+        <span>YOLOv5</span><span>Raspberry Pi 4</span><span>Pixhawk</span><span>PyMAVLink</span><span>MAVProxy</span><span>OpenCV</span><span>Flask</span><span>FFmpeg</span>
       </div>
       <div class="video-slot">
         <video class="align-top" src="drone.mp4" autoplay loop muted playsinline></video>
       </div>
     </article>
 
-    <!-- Project 2 -->
+    <!-- Project: Jetson -->
     <article class="project">
       <span class="project-tag">Edge deployment</span>
       <div class="project-head">
         <h2>Vision-Based Precision Spraying — Jetson Deployment</h2>
         <a class="project-link" href="https://github.com/Essais24/Vision-Based-Precision-Spraying">View on GitHub</a>
       </div>
+      <p class="project-meta">With Prof. Piyush Soni, IIT Kharagpur · Mar'26 – Sept'26</p>
       <span class="project-status">In development</span>
       <p class="desc">A rebuild of the weed-spraying pipeline for an NVIDIA Jetson Orin Nano, running on DeepStream with a TensorRT-optimized YOLOv8 crop detector. Weed regions are found by segmenting green vegetation and excluding the crop area, entirely on the GPU using PyTorch/CUDA, before being converted into real-world coordinates for the sprayer controller.</p>
+      <ul class="details">
+        <li>Green-inference approach isolates weeds by removing chilli plant regions and extracting weed bounding boxes, reaching up to 30 FPS on a Jetson Orin Nano Super.</li>
+        <li>Converts detections to 3D coordinates relative to the camera, then computes the sprayer rotation angle and nozzle actuation point.</li>
+        <li>UART link between the Jetson and an ESP32 drives stepper motors, solenoid valves and the spray pump, orienting the nozzle at each weed and triggering targeted spraying.</li>
+      </ul>
       <div class="stack">
-        <span>NVIDIA DeepStream</span>
-        <span>TensorRT</span>
-        <span>YOLOv8</span>
-        <span>PyTorch/CUDA</span>
-        <span>kornia</span>
-        <span>Jetson Orin Nano</span>
+        <span>NVIDIA DeepStream</span><span>TensorRT</span><span>YOLOv8</span><span>PyTorch/CUDA</span><span>kornia</span><span>Jetson Orin Nano</span><span>ESP32</span>
       </div>
       <div class="video-slot">
         <video src="spr.mp4" autoplay loop muted playsinline></video>
       </div>
     </article>
 
-    <!-- Project 3 -->
+    <!-- Project: Orchard classification -->
     <article class="project">
       <span class="project-tag">Remote sensing</span>
       <div class="project-head">
         <h2>Orchard Classification Using Satellite Imagery</h2>
         <a class="project-link" href="https://github.com/Essais24/Orchard-Classification-using-Sattelite-imagery">View on GitHub</a>
       </div>
+      <p class="project-meta">Remote research with Prof. Manoj Karkee, Cornell University · Jun'25 – Dec'25</p>
       <p class="desc">Mapping apple orchard canopy systems — V-trellis, vertical, and freestanding — across Washington's Yakima Valley using USDA NAIP aerial imagery. U-Net handles pixel-level segmentation of canopy architecture, while Mask R-CNN separates and classifies individual orchard structures, trained on 1,249 hand-labeled orchard instances.</p>
+      <ul class="details">
+        <li>Annotated orchards in QGIS and generated vector masks for segmentation.</li>
+        <li>Preprocessing: CLAHE, edge enhancement and georeferencing-preserving downsampling to 256×256; augmentation corrected the class imbalance against freestanding orchards.</li>
+        <li>Reached about 0.94 overall accuracy, with class-wise instance precision of 0.63 (freestanding), 0.88 (V-trellis) and 0.83 (vertical).</li>
+      </ul>
       <div class="stack">
-        <span>U-Net</span>
-        <span>Mask R-CNN</span>
-        <span>USDA NAIP imagery</span>
-        <span>Python</span>
-        <span>GIS preprocessing</span>
+        <span>U-Net</span><span>Mask R-CNN</span><span>USDA NAIP imagery</span><span>Python</span><span>QGIS</span>
       </div>
       <div>
         <a class="photo-box pub-photo" href="Final%20Results.png" target="_blank" rel="noopener">
@@ -633,12 +282,48 @@
       </div>
     </article>
 
-    <!-- Placeholder for future project -->
+    <!-- Project: Smart agriculture DSS (NEW) -->
+    <article class="project">
+      <span class="project-tag">Decision support</span>
+      <div class="project-head">
+        <h2>Smart Agriculture Decision Support System</h2>
+      </div>
+      <p class="project-meta">Smart India Hackathon · Sep'25 – Oct'25</p>
+      <span class="project-status">Prototype</span>
+      <p class="desc">An AI-based decision-support prototype for farmers that combines hyperspectral and sensor data to analyse crop health, soil and pests, and turns the results into practical recommendations through a simple interface.</p>
+      <ul class="details">
+        <li>Farmers select farm coordinates through a GPS-integrated UI; analysis uses prediction and rule-based models.</li>
+        <li>CNN–LSTM fusion models for anomaly detection and spatiotemporal forecasting.</li>
+        <li>Irrigation and crop-health maps generated from NDVI/NDWI and weather-based ET<sub>0</sub> estimates, shown on a dashboard with alerts.</li>
+        <li>Prototype data compiled for wheat only, from institutions such as ICAR.</li>
+      </ul>
+      <div class="stack">
+        <span>CNN–LSTM</span><span>Hyperspectral data</span><span>NDVI / NDWI</span><span>ET0</span><span>GPS</span><span>Dashboard</span>
+      </div>
+      <div class="media-slot">Photo / screenshot coming soon</div>
+    </article>
+
+    <!-- Project: Earthquake prediction (NEW) -->
+    <article class="project">
+      <span class="project-tag">Machine learning</span>
+      <div class="project-head">
+        <h2>Earthquake Magnitude Prediction — STEAD Dataset</h2>
+      </div>
+      <p class="project-meta">Research internship with Dr. Ripul Ghosh, CSIR-CSIO · Sep'24 – Nov'24</p>
+      <p class="desc">Machine-learning models for predicting earthquake magnitude from the Stanford Earthquake Dataset (STEAD), with metadata analysis to integrate seismic data from heterogeneous sources.</p>
+      <ul class="details">
+        <li>Performed feature selection and tested XGBoost, Random Forest, KNN and ANN models, reaching R<sup>2</sup> up to 0.87.</li>
+        <li>Applied K-Means clustering for location-dependent predictions and explored pattern recognition by reducing data points and optimizing features.</li>
+      </ul>
+      <div class="stack">
+        <span>XGBoost</span><span>Random Forest</span><span>KNN</span><span>ANN</span><span>K-Means</span><span>Python</span>
+      </div>
+      <div class="media-slot">Photo / plot coming soon</div>
+    </article>
+
     <article class="project placeholder">
       <span class="project-tag">More soon</span>
-      <div class="project-head">
-        <h2>Next project — details coming</h2>
-      </div>
+      <div class="project-head"><h2>Next project — details coming</h2></div>
       <p class="desc">Reserved for an upcoming project. Replace this block the same way as the others above once it's ready.</p>
     </article>
 
@@ -646,9 +331,7 @@
 </main>
 
 <footer class="site">
-  <div class="wrap">
-    <p>&copy; 2026 Archisha Ahuja. Built for GitHub Pages.</p>
-  </div>
+  <div class="wrap"><p>&copy; 2026 Archisha Ahuja. Built for GitHub Pages.</p></div>
 </footer>
 
 </body>
