@@ -71,6 +71,7 @@
   .project p.desc{max-width:68ch;margin:0 0 14px;color:var(--ink)}
   .project ul.details{max-width:68ch;margin:0 0 20px;padding-left:1.2em}
   .project ul.details li{margin-bottom:6px}
+  .project ul.details strong{font-weight:600}
   .stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
   .stack span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--ink-muted);border:1px solid var(--line-strong);padding:3px 8px}
 
@@ -199,13 +200,13 @@
       <span class="project-status">Internship project</span>
       <p class="desc">A ROS-based pipeline that integrates a 6-DoF UR5 manipulator with a Clearpath Warthog ground vehicle to reach and thin green fruit in orchard trees, from detection to a 3D target to arm motion.</p>
       <ul class="details">
-        <li>Developed a ROS-based robotic pipeline integrating a 6-DoF UR5 manipulator with a Clearpath Warthog unmanned ground vehicle to automate green-fruit thinning: detect a fruit, compute its 3D position in the arm's base frame, solve the joint angles and move the end-effector to it.</li>
-        <li>Built a URDF-based Gazebo simulation of the Warthog (links, joints, friction, meshes) with simulated sensor data, and 3D LiDAR waypoint navigation validated for sim-to-real transfer.</li>
-        <li>Tested a vision-guided path planning system using MoveIt and inverse kinematics, benchmarking OMPL (including RRTConnect), Anytime Path Shortening, STOMP and CHOMP, and upgrading from ROS Humble to Jazzy for newer MoveIt.</li>
+        <li>Developed a <strong>ROS-based robotic pipeline</strong> integrating a <strong>6-DoF UR5</strong> manipulator with a Clearpath Warthog unmanned ground vehicle to automate green-fruit thinning: detect a fruit, compute its 3D position in the arm's base frame, solve the joint angles and move the end-effector to it.</li>
+        <li>Built a <strong>URDF-based Gazebo simulation</strong> of the Warthog (links, joints, friction, meshes) with simulated sensor data, and <strong>3D LiDAR waypoint navigation</strong> validated for sim-to-real transfer.</li>
+        <li>Tested a vision-guided path planning system using <strong>MoveIt and inverse kinematics</strong>, benchmarking OMPL (including RRTConnect), Anytime Path Shortening, STOMP and CHOMP, and upgrading from ROS Humble to Jazzy for newer MoveIt.</li>
         <li>Planner paths were inconsistent: random paths risked collisions with the Warthog, the end-effector, or tangling the camera cable. STOMP and CHOMP depended on seed paths from those same planners, so the planners were dropped.</li>
-        <li>Deployed a grid-based visual servoing system: the camera view is split into 6 blocks, each with a recorded approach trajectory ending at a pre-approach point at most 0.5 m from the fruit.</li>
-        <li>From the pre-approach point, gain-controlled feedback converts the error between the end-effector and the fruit's 3D point into velocity commands (lower gain within 3 cm). It stops inside a 3 mm cube around the fruit or on timeout, achieving sub-3 mm end-effector accuracy.</li>
-        <li>Resolved outdoor depth failure of the Intel RealSense (IR-ToF) camera in sunlight by fusing calibrated 3D LiDAR and depth camera data: a ray from the camera's 3D point is cast into the LiDAR cloud, the first point of a circular cluster is taken as the fruit, and non-circular clusters (branches) are ignored.</li>
+        <li>Deployed a <strong>grid-based visual servoing system</strong>: the camera view is split into 6 blocks, each with a recorded approach trajectory ending at a pre-approach point at most 0.5 m from the fruit.</li>
+        <li>From the pre-approach point, gain-controlled feedback converts the error between the end-effector and the fruit's 3D point into velocity commands (lower gain within 3 cm). It stops inside a 3 mm cube around the fruit or on timeout, achieving <strong>sub-3 mm end-effector accuracy</strong>.</li>
+        <li>Resolved outdoor depth failure of the Intel RealSense (IR-ToF) camera in sunlight by <strong>fusing calibrated 3D LiDAR and depth camera data</strong>: a ray from the camera's 3D point is cast into the LiDAR cloud, the first point of a circular cluster is taken as the fruit, and non-circular clusters (branches) are ignored.</li>
         <li>Calibrated both the LiDAR (to the arm base link) and the camera so that small measurement errors did not distort the transform, improving 3D fruit localization reliability.</li>
         <li>Evaluated the detection model with and without fan-generated wind to study fruit occlusion.</li>
         <li>Started a generic navigation system for ground robots (URDF with sensors, Nav2 and SLAM) for row navigation; not completed within the internship.</li>
@@ -229,10 +230,10 @@
       <span class="project-status">Working prototype</span>
       <p class="desc">A GPS-guided drone that spots weeds from the air and sprays them directly, with no human in the loop. A YOLOv5 model running on a Raspberry Pi 4 and Pixhawk flight controller turns each detection into a real-world GPS coordinate, then commands the drone toward it and triggers the sprayer on arrival. Currently reaches 0.82 mAP@0.5 on the detection model; autonomous flight-to-target is still being finished.</p>
       <ul class="details">
-        <li>Designed and developed a GPS-guided autonomous drone using a Raspberry Pi 4B, Pixhawk flight controller, Pi Camera, and a sprayer module with an SRD-05VDC-3L-C motor controller for real-time weed detection in grass and precision spraying.</li>
-        <li>Trained YOLOv5-s on a grassland dataset, obtaining high precision and recall for weeds in video, and ran real-time inference (0.82 mAP@0.5 so far).</li>
-        <li>Deployed real-time inference and control through Wi-Fi remote connectivity, MediaMTX RTSP streaming and MAVProxy.</li>
-        <li>Integrated FFmpeg, Flask, PyMAVLink and Pigpio (GPIO pin control) for live video streaming, calculating and sharing GPS coordinates of detected weeds, and fully automated spraying driven by detection results.</li>
+        <li>Designed and developed a GPS-guided autonomous drone using a <strong>Raspberry Pi 4B, Pixhawk flight controller, Pi Camera</strong>, and a sprayer module with an SRD-05VDC-3L-C motor controller for real-time weed detection in grass and precision spraying.</li>
+        <li>Trained <strong>YOLOv5-s</strong> on a grassland dataset, obtaining high precision and recall for weeds in video, and ran real-time inference (<strong>0.82 mAP@0.5</strong> so far).</li>
+        <li>Deployed real-time inference and control through <strong>Wi-Fi remote connectivity, MediaMTX RTSP streaming and MAVProxy</strong>.</li>
+        <li>Integrated <strong>FFmpeg, Flask, PyMAVLink and Pigpio</strong> (GPIO pin control) for live video streaming, calculating and sharing GPS coordinates of detected weeds, and fully automated spraying driven by detection results.</li>
         <li>Everything is controlled remotely over the internet from a laptop; autonomous flight-to-target is still being finished.</li>
       </ul>
       <div class="stack">
@@ -254,11 +255,11 @@
       <span class="project-status">In development</span>
       <p class="desc">A rebuild of the weed-spraying pipeline for an NVIDIA Jetson Orin Nano, running on DeepStream with a TensorRT-optimized YOLOv8 crop detector. Weed regions are found by segmenting green vegetation and excluding the crop area, entirely on the GPU using PyTorch/CUDA, before being converted into real-world coordinates for the sprayer controller.</p>
       <ul class="details">
-        <li>Developed a field-deployable weed detection and localization pipeline for chilli, using green inference to isolate weeds by removing chilli plant regions and extracting weed bounding boxes.</li>
+        <li>Developed a field-deployable <strong>weed detection and localization pipeline</strong> for chilli, using green inference to isolate weeds by removing chilli plant regions and extracting weed bounding boxes.</li>
         <li>Segments green vegetation and excludes the crop area entirely on the GPU with PyTorch/CUDA, using a TensorRT-optimized YOLOv8 crop detector.</li>
-        <li>Converted detections to 3D world coordinates relative to the camera for real-time target localization, and calculated the sprayer rotation angle and nozzle actuation point from weed position.</li>
-        <li>Deployed the control pipeline on an NVIDIA Jetson Orin Nano Super, using NVIDIA DeepStream for GPU-accelerated inference and reaching up to 30 FPS for weed detection.</li>
-        <li>Established UART communication between the Jetson and an ESP32 to control stepper motors, solenoid valves and the spray pump, sending real-time direction, rotation-angle and actuation signals to orient the nozzle at detected weeds and trigger targeted spraying.</li>
+        <li>Converted detections to <strong>3D world coordinates</strong> relative to the camera for real-time target localization, and calculated the <strong>sprayer rotation angle</strong> and nozzle actuation point from weed position.</li>
+        <li>Deployed the control pipeline on an <strong>NVIDIA Jetson Orin Nano Super</strong>, using <strong>NVIDIA DeepStream</strong> for GPU-accelerated inference and reaching up to <strong>30 FPS</strong> for weed detection.</li>
+        <li>Established UART communication between the Jetson and an <strong>ESP32</strong> to control stepper motors, solenoid valves and the spray pump, sending real-time direction, rotation-angle and actuation signals to orient the nozzle at detected weeds and trigger targeted spraying.</li>
       </ul>
       <div class="stack">
         <span>NVIDIA DeepStream</span><span>TensorRT</span><span>YOLOv8</span><span>PyTorch/CUDA</span><span>kornia</span><span>Jetson Orin Nano</span><span>ESP32</span>
@@ -278,12 +279,12 @@
       <p class="project-meta">Remote research with Prof. Manoj Karkee, Cornell University · Jun'25 – Dec'25</p>
       <p class="desc">Mapping apple orchard canopy systems — V-trellis, vertical, and freestanding — across Washington's Yakima Valley using USDA NAIP aerial imagery. U-Net handles pixel-level segmentation of canopy architecture, while Mask R-CNN separates and classifies individual orchard structures, trained on 1,249 hand-labeled orchard instances.</p>
       <ul class="details">
-        <li>Trained CNN-based models, U-Net and Mask R-CNN, on NAIP satellite imagery from Yakima Valley, Washington, to classify apple orchards into Freestanding, Vertical and V-Trellis structural systems for geospatial analysis and other applications.</li>
+        <li>Trained CNN-based models, <strong>U-Net and Mask R-CNN</strong>, on NAIP satellite imagery from Yakima Valley, Washington, to classify apple orchards into <strong>Freestanding, Vertical and V-Trellis</strong> structural systems for geospatial analysis and other applications.</li>
         <li>U-Net performs pixel-level segmentation of canopy architecture; Mask R-CNN separates and classifies individual orchard structures, trained on 1,249 hand-labeled instances.</li>
         <li>Annotated orchards using QGIS and generated vector masks for precise segmentation.</li>
-        <li>Preprocessed imagery with CLAHE, edge enhancement and georeferencing-preserving downsampling (256×256), keeping inputs uniform and spatial integrity intact.</li>
+        <li>Preprocessed imagery with <strong>CLAHE, edge enhancement and georeferencing-preserving downsampling</strong> (256×256), keeping inputs uniform and spatial integrity intact.</li>
         <li>Applied data augmentation to correct class imbalance between freestanding and other orchard types.</li>
-        <li>Trained and fine-tuned both models, achieving about 0.94 overall accuracy, with class-wise instance precision of 0.63 (Freestanding), 0.88 (V-Trellis) and 0.83 (Vertical), and improved minority-class detection through augmentation.</li>
+        <li>Trained and fine-tuned both models, achieving about <strong>0.94</strong> overall accuracy, with class-wise instance precision of <strong>0.63</strong> (Freestanding), <strong>0.88</strong> (V-Trellis) and <strong>0.83</strong> (Vertical), and improved minority-class detection through augmentation.</li>
       </ul>
       <div class="stack">
         <span>U-Net</span><span>Mask R-CNN</span><span>USDA NAIP imagery</span><span>Python</span><span>QGIS</span>
@@ -306,12 +307,12 @@
       <span class="project-status">Prototype</span>
       <p class="desc">An AI-based decision-support prototype for farmers that combines hyperspectral and sensor data to analyse crop health, soil and pests, and turns the results into practical recommendations through a simple interface.</p>
       <ul class="details">
-        <li>Developed an AI-based decision-support prototype with a simple user interface for farmers, with GPS-integrated farm coordinate selection through the UI.</li>
-        <li>Used hyperspectral and sensor data for crop health, soil and pest analysis, with prediction and rule-based models.</li>
-        <li>Implemented CNN–LSTM fusion models for anomaly detection and spatiotemporal forecasting.</li>
-        <li>Generated irrigation and health maps from NDVI/NDWI and weather-based ET<sub>0</sub> estimates.</li>
+        <li>Developed an AI-based decision-support prototype with a simple user interface for farmers, with <strong>GPS-integrated</strong> farm coordinate selection through the UI.</li>
+        <li>Used <strong>hyperspectral and sensor data</strong> for crop health, soil and pest analysis, with prediction and rule-based models.</li>
+        <li>Implemented <strong>CNN–LSTM fusion models</strong> for anomaly detection and spatiotemporal forecasting.</li>
+        <li>Generated <strong>irrigation and health maps</strong> from NDVI/NDWI and weather-based ET<sub>0</sub> estimates.</li>
         <li>Built a dashboard for visualization, alerts and practical recommendations for farmers.</li>
-        <li>Compiled data for wheat only for the prototype, from institutions such as ICAR.</li>
+        <li>Compiled data for <strong>wheat only</strong> for the prototype, from institutions such as ICAR.</li>
       </ul>
       <div class="stack">
         <span>CNN–LSTM</span><span>Hyperspectral data</span><span>NDVI / NDWI</span><span>ET0</span><span>GPS</span><span>Dashboard</span>
